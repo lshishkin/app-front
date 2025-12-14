@@ -5,18 +5,33 @@
   "type": "module",
   "scripts": {
     "build": "rsbuild build",
-    "dev": "rsbuild dev --open",
-    "preview": "rsbuild preview"
+    "dev": "rsbuild dev --port 5000 --open ",
+    "preview": "rsbuild preview --port 5000",
+    "prepare": "husky",
+    "commit": "cz"
   },
   "dependencies": {
+    "module-alias": "^2.2.3",
     "react": "^19.2.3",
     "react-dom": "^19.2.3"
   },
   "devDependencies": {
+    "@commitlint/cli": "^20.2.0",
+    "@commitlint/config-conventional": "^20.2.0",
     "@rsbuild/core": "^1.6.14",
     "@rsbuild/plugin-react": "^1.4.2",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
     "typescript": "^5.9.3"
+  },
+  "_moduleAliases": {
+    "@": "src"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }

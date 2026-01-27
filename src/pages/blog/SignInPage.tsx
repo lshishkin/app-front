@@ -1,21 +1,24 @@
+import { Link, useNavigate } from "react-router-dom";
+import { useContext, useState } from "react";
+import useInputs from "@/features/blog/lib/hooks/useInputs";
+import { UserContext } from "@/features/blog/contexts/UserContextProvider";
+import { postLogin } from "@/features/blog/repositories/users/usersRepository";
+import { ACCESS_TOKEN_KEY } from "@/features/blog/constants/token.contant";
+import token from "@/features/blog/lib/token";
+import routerMeta from "@/features/blog/lib/routerMeta";
 
-import { Link, useNavigate } from 'react-router-dom';
-import { useContext, useState } from 'react';
-import useInputs from '@/feature/blog/features/blog/lib/hooks/useInputs';
-import { UserContext } from '@/feature/blog/features/blog/contexts/UserContextProvider';
-import { postLogin } from '@/feature/blog/features/blog/repositories/users/usersRepository';
-import { ACCESS_TOKEN_KEY } from '@/feature/blog/features/blog/constants/token.contant';
-import token from '@/feature/blog/features/blog/lib/token';
-import routerMeta from '@/feature/blog/features/blog/lib/routerMeta';
 
 const SignInPage = () => {
   const [error, setError] = useState({
-    email: '',
-    password: '',
-    emailOrPassword: '',
+    email: "",
+    password: "",
+    emailOrPassword: "",
   });
 
-  const [signIndata, onChangeSignInData] = useInputs({ email: '', password: '' });
+  const [signIndata, onChangeSignInData] = useInputs({
+    email: "",
+    password: "",
+  });
   const { setIsLogin } = useContext(UserContext);
 
   const navigate = useNavigate();
@@ -26,13 +29,13 @@ const SignInPage = () => {
       .then((res) => {
         token.setToken(ACCESS_TOKEN_KEY, res.data.user.token);
         setIsLogin(!!token.getToken(ACCESS_TOKEN_KEY));
-        navigate('/', { replace: true });
+        navigate("/", { replace: true });
       })
       .catch((err) => {
         setError({
           email: err.response.data.errors.email,
           password: err.response.data.errors.password,
-          emailOrPassword: err.response.data.errors['email or password'],
+          emailOrPassword: err.response.data.errors["email or password"],
         });
       });
   };
@@ -50,7 +53,9 @@ const SignInPage = () => {
             <ul className="error-messages">
               {error.email && <li>email {error.email}</li>}
               {error.password && <li>password {error.password}</li>}
-              {error.emailOrPassword && <li>email or password {error.emailOrPassword}</li>}
+              {error.emailOrPassword && (
+                <li>email or password {error.emailOrPassword}</li>
+              )}
             </ul>
 
             <form onSubmit={onLogin}>
@@ -75,7 +80,10 @@ const SignInPage = () => {
                   onChange={onChangeSignInData}
                 />
               </fieldset>
-              <button type="submit" className="btn btn-lg btn-primary pull-xs-right">
+              <button
+                type="submit"
+                className="btn btn-lg btn-primary pull-xs-right"
+              >
                 Sign in
               </button>
             </form>

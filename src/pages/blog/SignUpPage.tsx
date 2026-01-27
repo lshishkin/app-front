@@ -1,10 +1,11 @@
 
-import { ACCESS_TOKEN_KEY } from '@/feature/blog/features/blog/constants/token.contant';
-import { UserContext } from '@/feature/blog/features/blog/contexts/UserContextProvider';
-import useInputs from '@/feature/blog/features/blog/lib/hooks/useInputs';
-import routerMeta from '@/feature/blog/features/blog/lib/routerMeta';
-import token from '@/feature/blog/features/blog/lib/token';
-import { postRegister } from '@/feature/blog/features/blog/repositories/users/usersRepository';
+
+import { ACCESS_TOKEN_KEY } from '@/features/blog/constants/token.contant';
+import { UserContext } from '@/features/blog/contexts/UserContextProvider';
+import useInputs from '@/features/blog/lib/hooks/useInputs';
+import routerMeta from '@/features/blog/lib/routerMeta';
+import token from '@/features/blog/lib/token';
+import { postRegister } from '@/features/blog/repositories/users/usersRepository';
 import { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 

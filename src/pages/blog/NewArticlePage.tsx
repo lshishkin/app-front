@@ -1,21 +1,21 @@
-import useInputs from '@/feature/blog/lib/hooks/useInputs';
-import queryClient from '@/feature/blog/queries/queryClient';
-import { useCreateArticleMutation } from '@/feature/blog/queries/articles.query';
-import { QUERY_ARTICLES_KEY } from '@/feature/blog/constants/query.constant';
-import { useNavigate } from 'react-router-dom';
+import { QUERY_ARTICLES_KEY } from "@/features/blog/constants/query.constant";
+import useInputs from "@/features/blog/lib/hooks/useInputs";
+import { useCreateArticleMutation } from "@/features/blog/queries/articles.query";
+import queryClient from "@/features/blog/queries/queryClient";
+import { useNavigate } from "react-router-dom";
 
 const NewArticlePage = () => {
   const navigate = useNavigate();
   const [articleData, onChangeArticleData, setArticleData] = useInputs({
-    title: '',
-    description: '',
-    body: '',
-    tag: '',
+    title: "",
+    description: "",
+    body: "",
+    tag: "",
     tagList: [],
   });
 
   const onEnter = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === 'Enter') {
+    if (event.key === "Enter") {
       event.preventDefault();
       if (!articleData.tagList.includes(articleData.tag)) {
         addTag(articleData.tag);
@@ -26,13 +26,16 @@ const NewArticlePage = () => {
   const addTag = (newTag: string) => {
     setArticleData({
       ...articleData,
-      tag: '',
+      tag: "",
       tagList: [...articleData.tagList, newTag],
     });
   };
 
   const removeTag = (target: string) => {
-    setArticleData({ ...articleData, tagList: articleData.tagList.filter((tag: string) => tag !== target) });
+    setArticleData({
+      ...articleData,
+      tagList: articleData.tagList.filter((tag: string) => tag !== target),
+    });
   };
 
   const createArticleMutation = useCreateArticleMutation();
@@ -106,14 +109,17 @@ const NewArticlePage = () => {
                       <i
                         role="presentation"
                         className="ion-close-round"
-                        style={{ cursor: 'pointer', marginRight: '5px' }}
+                        style={{ cursor: "pointer", marginRight: "5px" }}
                         onClick={() => removeTag(tag)}
-                      />{' '}
-                      {tag}{' '}
+                      />{" "}
+                      {tag}{" "}
                     </span>
                   ))}
                 </div>
-                <button className="btn btn-lg pull-xs-right btn-primary" type="submit">
+                <button
+                  className="btn btn-lg pull-xs-right btn-primary"
+                  type="submit"
+                >
                   Publish Article
                 </button>
               </fieldset>

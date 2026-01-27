@@ -1,13 +1,16 @@
-
+import { QueryClientProvider } from "@tanstack/react-query";
 import Router from "./Router";
 import UserContextProvider from "./contexts/UserContextProvider";
+import queryClient from "./queries/queryClient";
 
 export const BlogPage = () => {
   return (
     <div className="App">
-      <UserContextProvider>
-        <Router />
-      </UserContextProvider>
+      <QueryClientProvider client={queryClient}>
+        <UserContextProvider>
+          <Router />
+        </UserContextProvider>
+      </QueryClientProvider>
     </div>
   );
 };

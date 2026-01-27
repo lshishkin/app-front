@@ -1,8 +1,9 @@
-import { useGetProfileQueries } from '@/feature/blog/queries/profiles.query';
 import { NavLink, Route, Routes, useLocation } from 'react-router-dom';
 import { useState } from 'react';
-import Profile from '@/feature/blog/components/Profile';
-import FeedList from '@/feature/blog/components/feed/FeedList';
+import { useGetProfileQueries } from '@/features/blog/queries/profiles.query';
+import Profile from '@/features/blog/components/Profile';
+import FeedList from '@/features/blog/components/feed/FeedList';
+
 
 const ProfilePage = () => {
   const { state } = useLocation();

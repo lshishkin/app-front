@@ -1,7 +1,8 @@
-import useInputs from '@/feature/blog/lib/hooks/useInputs';
-import queryClient from '@/feature/blog/queries/queryClient';
-import { useUpdateArticleMutation } from '@/feature/blog/queries/articles.query';
-import { QUERY_ARTICLE_KEY } from '@/feature/blog/constants/query.constant';
+
+import { QUERY_ARTICLE_KEY } from '@/features/blog/constants/query.constant';
+import useInputs from '@/features/blog/lib/hooks/useInputs';
+import { useUpdateArticleMutation } from '@/features/blog/queries/articles.query';
+import queryClient from '@/features/blog/queries/queryClient';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 const EditArticlePage = () => {

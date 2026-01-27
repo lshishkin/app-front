@@ -1,8 +1,9 @@
+import FeedList from '@/features/blog/components/feed/FeedList';
+import { UserContext } from '@/features/blog/contexts/UserContextProvider';
+import { useGetArticlesQueries } from '@/features/blog/queries/articles.query';
 import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import FeedList from '@/feature/blog/components/feed/FeedList';
-import { useGetArticlesQueries } from '@/feature/blog/queries/articles.query';
-import { UserContext } from '@/feature/blog/contexts/UserContextProvider';
+
 
 const HomePage = () => {
   const { isLogin } = useContext(UserContext);

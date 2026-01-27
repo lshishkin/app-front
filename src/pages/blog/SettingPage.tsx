@@ -1,11 +1,12 @@
 
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
-import { useGetUserQuery } from '@/feature/blog/features/blog/queries/user.query';
-import { UserContext } from '@/feature/blog/features/blog/contexts/UserContextProvider';
-import { ACCESS_TOKEN_KEY } from '@/feature/blog/features/blog/constants/token.contant';
-import token from '@/feature/blog/features/blog/lib/token';
-import SettingForm from '@/feature/blog/features/blog/components/SettingForm';
+import { UserContext } from '@/features/blog/contexts/UserContextProvider';
+import { ACCESS_TOKEN_KEY } from '@/features/blog/constants/token.contant';
+import token from '@/features/blog/lib/token';
+import { useGetUserQuery } from '@/features/blog/queries/user.query';
+import SettingForm from '@/features/blog/components/SettingForm';
+
 
 const SettingPage = () => {
   const navigate = useNavigate();

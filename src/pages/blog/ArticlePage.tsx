@@ -1,14 +1,15 @@
-import { useGetArticleQueries } from '@/feature/blog/queries/articles.query';
 import { Link, useLocation } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import ButtonSelector from '@/feature/blog/components/article/ButtonSelector';
 import { useContext } from 'react';
-import { UserContext } from '@/feature/blog/contexts/UserContextProvider';
-import Comment from '@/feature/blog/components/article/Comment';
-import routerMeta from '@/feature/blog/lib/routerMeta';
-import convertToDate from '@/feature/blog/lib/utils/convertToDate';
-import { USER_DEFAULT_IMG } from '@/feature/blog/constants';
+import { useGetArticleQueries } from '@/features/blog/queries/articles.query';
+import { UserContext } from '@/features/blog/contexts/UserContextProvider';
+import { USER_DEFAULT_IMG } from '@/features/blog/constants';
+import convertToDate from '@/features/blog/lib/utils/convertToDate';
+import ButtonSelector from '@/features/blog/components/article/ButtonSelector';
+import routerMeta from '@/features/blog/lib/routerMeta';
+import Comment from '@/features/blog/components/article/Comment';
+
 
 const ArticlePage = () => {
   const { state } = useLocation();

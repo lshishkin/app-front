@@ -1,0 +1,20 @@
+
+/* Иониконс */
+@import url('//https://fonts.googleapis.com');
+
+/* Google Fonts */
+@import url('//fonts.gstatic.com');
+
+/* Bootstrap тема */
+@import url('//fonts.googleapis.com/css2?family=Bruno+Ace&family=Rubik+Mono+One&display=swap');
+
+* {
+  margin: 0;
+  font-family: "Bruno Ace", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+html {
+  overflow: hidden;
+}

@@ -1,0 +1,18 @@
+import { NavLink } from 'react-router-dom';
+import type { IRouterMeta } from '../../lib/routerMeta';
+
+interface INavItemProps {
+  menu: IRouterMeta;
+}
+
+const NavItem = ({ menu }: INavItemProps) => {
+  return (
+    <li key={menu.path} className="nav-item">
+      <NavLink to={menu.path} className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
+        <i className={menu.icon} /> {menu.name}
+      </NavLink>
+    </li>
+  );
+};
+
+export default NavItem;

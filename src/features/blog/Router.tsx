@@ -8,7 +8,7 @@ import routerMeta, { type IRouterMeta } from './lib/routerMeta';
 import ProtectedRoute from './components/HOC/ProtectedRoute';
 import LoadingFallback from './components/LoadingFallback';
 
-const lazyImport = (pageName: string) => lazy(() => import(`@/pages/${pageName}`));
+const lazyImport = (pageName: string) => lazy(() => import(`../../pages/blog/${pageName}`));
 
 const assignRouter = Object.keys(routerMeta).map((componentKey: string) => {
   const props: IRouterMeta = routerMeta[componentKey];

@@ -15,6 +15,7 @@ export const MobileMenu = memo(() => {
   return (
     <motion.div
       style={{
+        width: 60,
         height: "100vh",
         background: "linear-gradient(120deg, #03a9f4 0%, #01579b 100%)",
         transition: "flex 0.3s ease",

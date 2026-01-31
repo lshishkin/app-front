@@ -1,10 +1,16 @@
+import { styled } from "@mui/material/styles";
 import { PAGES } from "../../lib/constant";
 import { PageLayout } from "../../widgets/PageLayout";
 
 export const Blog = () => {
   return (
     <PageLayout title="Блог" id={PAGES.BLOG}>
-      <h1 style={{ color: "#ffffff" }}>Страница в разработке</h1>
+      <Text>Страница в разработке</Text>
     </PageLayout>
   );
 };
+
+const Text = styled("h1")({
+  color: "#ffffff",
+  margin: 12,
+});

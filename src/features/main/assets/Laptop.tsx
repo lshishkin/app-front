@@ -1,9 +1,9 @@
-export const LapTop = () => {
+export const LapTop = ({ isMobile }: { isMobile: boolean }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="300"
-      height="300"
+      width={isMobile ? 150 : 300}
+      height={isMobile ? 150 : 300}
       viewBox="0 0 512 512"
     >
       <path

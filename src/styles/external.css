@@ -6,12 +6,12 @@
 @import url('//fonts.gstatic.com');
 
 /* Bootstrap тема */
-@import url('//fonts.googleapis.com/css2?family=Bruno+Ace&family=Rubik+Mono+One&display=swap');
+@import url('//fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 * {
   margin: 0;
-  font-family: "Bruno Ace", sans-serif;
-  font-weight: 400;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
   font-style: normal;
 }
 

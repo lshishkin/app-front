@@ -1,35 +1,39 @@
-import { useAtomValue } from "jotai";
-import styled from "styled-components";
-import { pageAtom } from "../../jotai";
+import { useTheme } from "@mui/material/styles";
+import { useGetPage } from "../../lib/hooks";
+import { useNavigate } from "react-router-dom";
+import { PAGES } from "../../lib/constant";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import type { JSX } from "react";
+import * as S from "./styles";
 
-export const PageLayout = ({ title, children, id }) => {
-  const page = useAtomValue(pageAtom);
+
+
+export const PageLayout = ({
+  title,
+  children,
+  id,
+}: {
+  title: string;
+  children: JSX.Element;
+  id: string;
+}) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm")); // меньше чем sm
+  const page = useGetPage();
+  const navigate = useNavigate();
+  const setPage = (pageId: string) => {
+    navigate(pageId === PAGES.HOME ? "/" : `/${pageId}`);
+  };
   return (
-    <div style={{ position: "relative", height: "calc(100% - 200px)" }}>
-      <Title>{title}</Title>
-      <div
-        style={{
-          position: "absolute",
-          left: 0,
-          height: "100%",
-          justifyContent: "flex-end",
-          marginTop: 200,
-        }}
-      >
+    <S.Root>
+      <S.TitleContainer>
+        {isMobile ? null : (
+          <S.Title onClick={() => setPage(id)}>{title}</S.Title>
+        )}
+      </S.TitleContainer>
+      <S.PageContainer isMobile={isMobile}>
         {page === id ? children : null}
-      </div>
-    </div>
+      </S.PageContainer>
+    </S.Root>
   );
 };
-
-const Title = styled.p`
-  position: absolute;
-  margin-top: 12px;
-  margin-left: 12px;
-  writing-mode: vertical-rl;
-  font-size: 24px;
-  color: white;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  cursor: pointer;
-`;

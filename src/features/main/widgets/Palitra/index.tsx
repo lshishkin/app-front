@@ -1,31 +1,42 @@
-import styled from "styled-components";
 import { Item } from "./item";
 import { HomePage } from "../../pages/home";
 import { Blog } from "../../pages/blog";
-import { AboutUs } from "../../pages/aboutUs";
+import { AboutMe } from "../../pages/AboutMe";
 import { Contacts } from "../../pages/contacts";
 import { COLORS } from "../../lib/constant";
+import { styled, useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
+import { MobileMenu } from "./mobileMenu";
 
 export const Components = {
   home: <HomePage />,
   blog: <Blog />,
-  about_us: <AboutUs />,
+  about_me: <AboutMe />,
   contacts: <Contacts />,
 };
 
 export const Palitra = () => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const colorList = isMobile
+    ? [COLORS[0], ...COLORS.slice(8, COLORS.length)]
+    : COLORS;
+
   return (
     <Container>
-      {COLORS.map(({ color, id }) => (
+      {isMobile ? <MobileMenu /> : null}
+      {colorList.map(({ color, id }) => (
         <Item background={color} key={id} id={id} />
       ))}
     </Container>
   );
 };
 
-const Container = styled.div`
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  align-items: flex-end;
-`;
+const Container = styled("div")(() => ({
+  maxWidth: "100vw",
+  maxHeight: "100vh",
+  display: "flex",
+  alignItems: "flex-end",
+  overflow: "hidden",
+}));

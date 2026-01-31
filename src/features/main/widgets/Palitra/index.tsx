@@ -1,13 +1,13 @@
 import { Item } from "./item";
 import { HomePage } from "../../pages/home";
 import { Blog } from "../../pages/blog";
-import { AboutMe } from "../../pages/AboutMe";
 import { Contacts } from "../../pages/contacts";
 import { COLORS } from "../../lib/constant";
 import { styled, useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
 import { MobileMenu } from "./mobileMenu";
+import { AboutMe } from "../../pages/aboutMe";
 
 export const Components = {
   home: <HomePage />,

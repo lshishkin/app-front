@@ -4,7 +4,7 @@ import { PageLayout } from "../../widgets/PageLayout";
 import Typography from "@mui/material/Typography";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Button from "@mui/material/Button";
-import DownloadIcon from '@mui/icons-material/Download';
+import DownloadIcon from "@mui/icons-material/Download";
 
 export const AboutMe = () => {
   const theme = useTheme();
@@ -16,16 +16,24 @@ export const AboutMe = () => {
           href="/resume.pdf" // ← путь начинается с /
           download="Резюме_Шишкин_Леонид_2026.pdf" // ← желаемое имя файла у пользователя
         >
-          <Button startIcon={<DownloadIcon />} style={{
-            color:'#ffffff'
-          }} variant="text" >Скачать резюме (PDF)</Button>
+          <Button
+            startIcon={<DownloadIcon />}
+            style={{
+              color: "#ffffff",
+            }}
+            variant="text"
+          >
+            Скачать резюме (PDF)
+          </Button>
         </Link>
 
-        {!isMobile&&<Image
-          src="https://sun9-63.userapi.com/s/v1/ig2/hKGd_VuYejPBrFhM-bZhkGhsk8NjYe9frLsdYLRkZehFoG2c0XNpNB4CQbEPP2U7JjKal9VbQKmHFWL5sJMLpHT4.jpg?quality=95&as=32x71,48x107,72x160,108x240,160x356,240x533,360x800,480x1067,540x1200,640x1422,720x1600&from=bu&cs=720x0"
-          alt="Леонид Шишкин"
-          isMobile={isMobile}
-        />}
+        {!isMobile && (
+          <Image
+            src="https://sun9-63.userapi.com/s/v1/ig2/hKGd_VuYejPBrFhM-bZhkGhsk8NjYe9frLsdYLRkZehFoG2c0XNpNB4CQbEPP2U7JjKal9VbQKmHFWL5sJMLpHT4.jpg?quality=95&as=32x71,48x107,72x160,108x240,160x356,240x533,360x800,480x1067,540x1200,640x1422,720x1600&from=bu&cs=720x0"
+            alt="Леонид Шишкин"
+            isMobile={isMobile}
+          />
+        )}
         <Typography variant="h5" mb={2}>
           Здравствуйте!
         </Typography>
@@ -96,6 +104,7 @@ const Container = styled("div")({
   color: "#ffffff",
   maxHeight: "-webkit-fill-available",
   overflowY: "auto",
+  marginBottom: 24,
   /* Firefox */
   scrollbarWidth: "none",
   /* IE / old Edge */
@@ -110,5 +119,4 @@ const Container = styled("div")({
 const Link = styled("a")({
   color: "inherit",
   textDecoration: "none",
-  
 });

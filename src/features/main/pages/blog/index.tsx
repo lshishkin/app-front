@@ -11,6 +11,6 @@ export const Blog = () => {
 };
 
 const Text = styled("h1")({
-  color: "#ffffff",
+  color: "#000000",
   margin: 12,
 });

@@ -28,7 +28,7 @@ export const PageLayout = ({
     <S.Root>
       <S.TitleContainer>
         {isMobile ? null : (
-          <S.Title onClick={() => setPage(id)}>{title}</S.Title>
+          <S.Title color={page === id&&id!==PAGES.HOME?"#000":"#fff"} onClick={() => setPage(id)}>{title}</S.Title>
         )}
       </S.TitleContainer>
       <S.PageContainer isMobile={isMobile}>

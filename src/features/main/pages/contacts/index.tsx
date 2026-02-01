@@ -52,6 +52,6 @@ const Container = styled("div")(({ isMobile }: { isMobile: boolean }) => ({
   fontSize: isMobile ? 17 : 24,
   fontWeight: "bold",
   padding: 24,
-  color: "#ffffff",
+  color: "#000000",
   fontStyle: "normal",
 }));

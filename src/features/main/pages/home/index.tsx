@@ -28,14 +28,18 @@ export const HomePage = () => {
     <PageLayout title="Главная" id={PAGES.HOME}>
       <Root>
         <motion.div
-          style={{ marginTop: "50%", marginLeft: 60 }}
+          style={{
+            marginTop: "50%",
+            marginLeft: isMobile ? 60 : 200,
+            transform: !isMobile ? "scale(2)" : undefined,
+          }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{
             delay: isHomeTitleAnimation ? 0 : 2,
           }}
         >
-          <LapTop isMobile={isMobile} />
+          {/* <LapTop isMobile={isMobile} /> */}
           <div>
             <TitleContainer isMobile={isMobile}>
               <Shishkin />

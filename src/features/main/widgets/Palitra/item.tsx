@@ -34,13 +34,17 @@ export const Item = ({
       }
       return 1;
     }
-  }
+  };
   return (
     <motion.div
       style={{
-        flexGrow:flexGrow(),
+        flexGrow: flexGrow(),
         height: "100vh",
-        background,
+        background: `${
+          page === id && id !== PAGES.HOME
+            ? "white"
+            : background
+        }`,
         transition: "flex 0.3s ease",
       }}
       animate={{ height: "100vh" }}

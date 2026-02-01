@@ -19,7 +19,7 @@ export const AboutMe = () => {
           <Button
             startIcon={<DownloadIcon />}
             style={{
-              color: "#ffffff",
+              color: "#000000",
             }}
             variant="text"
           >
@@ -101,7 +101,7 @@ const Image = styled("img")(({ isMobile }: { isMobile: boolean }) => ({
 const Container = styled("div")({
   padding: 24,
   fontSize: 24,
-  color: "#ffffff",
+  color: "#000000",
   maxHeight: "-webkit-fill-available",
   overflowY: "auto",
   marginBottom: 24,

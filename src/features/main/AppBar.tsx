@@ -15,7 +15,13 @@ import Button from "@mui/material/Button";
 import { styleConstant } from "@/shared/config/styleConstant";
 
 const drawerWidth = 240;
-const navItems = ["Home", "About", "Contact"];
+const navItems = [
+  { name: "home", title: "Главная" },
+  { name: "about", title: "Обо мне" },
+  { name: "resume", title: "Резюме" },
+  { name: "skills", title: "Навыки" },
+  { name: "contacts", title: "Контакты" },
+];
 
 export const DrawerAppBar = () => {
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -36,10 +42,10 @@ export const DrawerAppBar = () => {
       </Typography>
       <Divider />
       <List>
-        {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
+        {navItems.map(({ name, title }) => (
+          <ListItem key={name} disablePadding>
             <ListItemButton sx={{ textAlign: "center" }}>
-              <ListItemText primary={item} />
+              <ListItemText primary={title} />
             </ListItemButton>
           </ListItem>
         ))}
@@ -76,7 +82,7 @@ export const DrawerAppBar = () => {
                 xs: "none",
                 sm: "block",
                 fontFamily: "Pacifico",
-                fontSize: "32px",
+                fontSize: "2rem",
               },
             }}
           >
@@ -84,7 +90,7 @@ export const DrawerAppBar = () => {
               style={{
                 color: styleConstant.color.second,
                 fontFamily: "Pacifico",
-                fontStyle: 'italic',
+                fontStyle: "italic",
               }}
             >
               Ш
@@ -94,7 +100,7 @@ export const DrawerAppBar = () => {
               style={{
                 color: styleConstant.color.second,
                 fontFamily: "Pacifico",
-                fontStyle: 'italic',
+                fontStyle: "italic",
               }}
             >
               Л
@@ -102,9 +108,9 @@ export const DrawerAppBar = () => {
             еонид
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
-            {navItems.map((item) => (
-              <Button key={item} sx={{ color: "#fff" }}>
-                {item}
+            {navItems.map(({ name, title }) => (
+              <Button key={name} sx={{ color: "#fff" }}>
+                {title}
               </Button>
             ))}
           </Box>

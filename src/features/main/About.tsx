@@ -1,8 +1,6 @@
 import { styled, useTheme } from "@mui/material/styles";
 import { styleConstant } from "@/shared/config/styleConstant";
 import { CirclePhoto } from "@/shared/ui/CirclePhoto";
-import { Button } from "@/shared/ui/Button";
-import { ContactIcons } from "@/shared/ui/ContactIcons";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { about } from "@/data/about";
 
@@ -14,7 +12,7 @@ export const About = () => {
     <Root>
       {!isMobile && (
         <PhotoSide>
-          <CirclePhoto src={"/man_2.png"} />
+          <CirclePhoto src={"/code.jpg"} />
         </PhotoSide>
       )}
       <TextSide>

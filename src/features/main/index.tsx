@@ -6,24 +6,12 @@ import { DrawerAppBar } from "./AppBar";
 import { styleConstant } from "@/shared/config/styleConstant";
 import { Home } from "./Home";
 import { About } from "./About";
+import { styled } from "@mui/material/styles";
 
 export const Main = () => {
   return (
-    <Box
-      sx={{
-        display: "flex",
-        background: styleConstant.background.main,
-        minHeight: "100vh",
-        color: styleConstant.color.main,
-        alignItems: "center",
-        flexDirection: "column",
-      }}
-    >
-      <div
-        style={{
-          maxWidth: 1440,
-        }}
-      >
+    <Root>
+      <Container>
         <CssBaseline />
         <DrawerAppBar />
         <Box component="main" sx={{ p: 3, width: "100%" }}>
@@ -31,7 +19,20 @@ export const Main = () => {
           <Home />
           <About />
         </Box>
-      </div>
-    </Box>
+      </Container>
+    </Root>
   );
 };
+
+const Root = styled("div")({
+  display: "flex",
+  background: styleConstant.background.main,
+  minHeight: "100vh",
+  color: styleConstant.color.main,
+  alignItems: "center",
+  flexDirection: "column",
+});
+
+const Container = styled("div")({
+  maxWidth: 1440,
+});

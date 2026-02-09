@@ -3,21 +3,23 @@ import { styleConstant } from "@/shared/config/styleConstant";
 import { CirclePhoto } from "@/shared/ui/CirclePhoto";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { about } from "@/data/about";
+import { CodeTyping3D } from "@/shared/ui/CodeTyping3D";
+
+
 
 export const About = () => {
-  const theme = useTheme(); // Получаем текущую тему для доступа к breakpoints
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm")); // Проверяем, меньше ли экран 'sm' (600px по умолчанию)
+  const theme = useTheme(); 
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm")); 
 
   return (
     <Root>
       {!isMobile && (
         <PhotoSide>
-          <CirclePhoto src={"/code.jpg"} />
+          <CodeTyping3D />
         </PhotoSide>
       )}
       <TextSide>
         <Title>Обо мне</Title>
-      
         <Description>{about.main}</Description>
         <Description>{about.outro}</Description>
       </TextSide>

@@ -23,7 +23,9 @@
     "module-alias": "^2.2.3",
     "motion": "^12.29.2",
     "react-dom": "^19.2.4",
-    "styled-components": "^6.3.8",
+    "react-simple-typewriter": "^5.0.1",
+    "react-syntax-highlighter": "^16.1.0",
+    "styled-components": "^6.3.9",
     "three": "^0.182.0"
   },
   "devDependencies": {
@@ -34,6 +36,8 @@
     "@types/node": "^16.18.11",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
+    "@types/react-syntax-highlighter": "^15.5.13",
+    "@types/styled-components": "^5.1.36",
     "axios": "^1.2.4",
     "husky": "^9.1.7",
     "lint-staged": "^16.2.7",

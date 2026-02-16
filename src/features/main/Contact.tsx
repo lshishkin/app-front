@@ -10,11 +10,9 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import { profile } from "@/data/profile";
 import { contacts } from "@/data/contacts";
 import emailjs from "@emailjs/browser";
-import ReCAPTCHA from "react-google-recaptcha";
+import { ReCaptchaProvider, ReCaptcha } from "@wojtekmaj/react-recaptcha-v3";
 
 export const Contact = () => {
-  const recaptchaRef = useRef(null);
-  const token = recaptchaRef.current?.getValue();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -25,6 +23,7 @@ export const Contact = () => {
 
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [token, setToken] = useState("");
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -58,7 +57,7 @@ export const Contact = () => {
         },
         { publicKey },
       );
-     
+
       setSuccess(true);
       setFormData({
         name: "",
@@ -74,7 +73,6 @@ export const Contact = () => {
       setLoading(false);
     }
   };
-
   return (
     <Root id="contacts">
       <Container>
@@ -199,11 +197,56 @@ export const Contact = () => {
               variant="contained"
               size="large"
               type="submit"
-              disabled={loading||!token}
+              disabled={loading || !token}
             >
               {loading ? "Отправляю..." : "Отправить сообщение"} 🚀
             </SubmitButton>
-            <ReCAPTCHA sitekey={import.meta.env.PUBLIC_RECAPTCHA_KEY} ref={recaptchaRef} />
+            <div
+              style={{
+                position: "relative",
+              }}
+            >
+              <ReCaptchaProvider
+                reCaptchaKey={import.meta.env.PUBLIC_RECAPTCHA_KEY}
+              >
+                <ReCaptcha
+                  onVerify={(v) => {
+                    setToken(v);
+                  }}
+                />
+              </ReCaptchaProvider>
+              <div
+                style={{
+                  fontSize: "11px",
+                  textAlign: "center",
+                  color: "#777",
+                  marginTop: "12px",
+                  lineHeight: 1.4,
+                }}
+              >
+                Эта форма защищена <strong>reCAPTCHA</strong> от Google.
+                <br />
+                Применяются{" "}
+                <a
+                  href="https://policies.google.com/privacy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: "#777", textDecoration: "underline" }}
+                >
+                  Политика конфиденциальности
+                </a>{" "}
+                и{" "}
+                <a
+                  href="https://policies.google.com/terms"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: "#777", textDecoration: "underline" }}
+                >
+                  Условия использования
+                </a>
+                .
+              </div>
+            </div>
             {success && (
               <SuccessMessage>Сообщение успешно отправлено!</SuccessMessage>
             )}
@@ -408,7 +451,7 @@ const SubmitButton = styled(Button)(({ theme }) => ({
   padding: "0.75rem 2rem",
   fontSize: "1rem",
   fontWeight: 600,
-  '&:disabled': {
+  "&:disabled": {
     backgroundColor: "rgba(255, 255, 255, 0.1)",
     color: "rgba(255, 255, 255, 0.4)",
     cursor: "not-allowed",

@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import styled from "styled-components";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { styleConstant } from "../config/styleConstant";
+import { styled } from "@mui/material";
 
 const code = `
 export const About = () => {
@@ -17,8 +18,8 @@ export const About = () => {
       )}
       <TextSide>
         <Title>Обо мне</Title>
-        <Description>{about.main}</Description>
-        <Description>{about.outro}</Description>
+        <Text>{about.main}</Text>
+        <Text>{about.outro}</Text>
       </TextSide>
     </Root>
   );
@@ -50,28 +51,38 @@ export const CodeTyping3D = () => {
   );
 };
 
-const Wrapper = styled.div`
-  perspective: 1200px;
-  display: flex;
-  justify-content: center;
-  margin-left: 30px;
-`;
+const Wrapper = styled("div")(({ theme }) => ({
+  perspective: 1200,
+  display: "flex",
+  justifyContent: "center",
+  marginLeft: "30px",
+  [theme.breakpoints.down("sm")]: {
+    perspective: 800,
+  },
+}));
 
-const CodeCard = styled.div`
-  background: #1e1e1e;
-  padding: 24px 28px;
-  border-radius: 16px;
+const CodeCard = styled("div")(({ theme }) => ({
+  background: "#1e1e1e",
+  padding: "24px 28px",
+  borderRadius: "16px",
 
-  transform: rotateX(12deg) rotateY(20deg);
-  transform-style: preserve-3d;
+  transform: "rotateX(12deg) rotateY(20deg)",
+  transformStyle: "preserve-3d",
 
-  box-shadow:
-    0 20px 40px rgba(0, 0, 0, 0.4),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  boxShadow: styleConstant.boxShadow.main,
 
-  font-size: 14px;
-  line-height: 1.6;
-  width: 550px;
-  height: 500px;
-  overflow: hidden;
-`;
+  fontSize: "14px",
+  lineHeight: 1.6,
+  width: "550px",
+  height: "500px",
+  overflow: "hidden",
+  [theme.breakpoints.down("sm")]: {
+    width: 250,
+    height: 350,
+    fontSize: 6,
+    lineHeight: 1,
+    "& .language-javascript": {
+      fontSize: "6px!important",
+    },
+  },
+}));

@@ -1,30 +1,31 @@
-export const skills = {
-  primary: [
-    'React',
-    'TypeScript',
-    'JavaScript (ES6+)',
-    'Redux / RTK Query',
-    'TanStack Query',
-    'MUI',
-    'CSS-in-JS',
-  ],
+export const skills = [
+  { name: "TypeScript", iconPath: "/skills/ts.svg" },
+  { name: "React", iconPath: "/skills/react.svg" },
+  { name: "JavaScript", iconPath: "/skills/js.svg" },
+  { name: "Redux", iconPath: "/skills/redux.svg" },
+  { name: "HTML5", iconPath: "/skills/html5.svg" },
+  { name: "CSS3", iconPath: "/skills/css3.svg" },
+  { name: "Jotai", iconPath: "/skills/jotai.svg" },
+  { name: "React Query", iconPath: "/skills/react-query.svg" },
+  { name: "Webpack", iconPath: "/skills/webpack.svg" },
+  { name: "Module Federation", iconPath: "/skills/module-federation.svg" },
+  // "TanStack Query",
+  // "MUI",
+  // "CSS-in-JS",
+  // "Next.js",
+  // "Webpack",
+  // "RsBuild",
+  // "Microfrontends (Module Federation)",
+  // "REST API",
+  // "WebSocket",
+  // "Node.js",
+  // "Nest.js",
+];
 
-  secondary: [
-    'Next.js',
-    'Webpack',
-    'RsBuild',
-    'Microfrontends (Module Federation)',
-    'REST API',
-    'WebSocket',
-    'Node.js',
-    'Nest.js',
-  ],
-
-  practices: [
-    'Компонентный подход',
-    'Управление состоянием',
-    'Оптимизация производительности',
-    'Чистая архитектура',
-    'Agile / Scrum',
-  ],
-};
+export const practices = [
+  "Компонентный подход",
+  "Управление состоянием",
+  "Оптимизация производительности",
+  "Чистая архитектура",
+  "Agile / Scrum",
+];

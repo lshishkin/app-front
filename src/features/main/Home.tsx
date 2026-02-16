@@ -5,13 +5,14 @@ import { Button } from "@/shared/ui/Button";
 import { ContactIcons } from "@/shared/ui/ContactIcons";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { profile } from "@/data/profile";
+import { Link } from "react-scroll";
 
 export const Home = () => {
-  const theme = useTheme(); // Получаем текущую тему для доступа к breakpoints
+  const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm")); // Проверяем, меньше ли экран 'sm' (600px по умолчанию)
 
   return (
-    <Root>
+    <Root id="home">
       <TextSide>
         <Greetings>Здравствуйте! Меня зовут</Greetings>
         <Name>
@@ -20,17 +21,45 @@ export const Home = () => {
         </Name>
         <Profession>{profile.role}</Profession>
         <Description>{profile.tagline}</Description>
+        {isMobile ? (
+          <PhotoMobileWrapper>
+            <CirclePhoto src={"/man_1.png"} />
+          </PhotoMobileWrapper>
+        ) : null}
         <ButtonContainer>
           <Button variant="contained" size="large">
-            Скачать резюме
+            <a
+              href={"/resume.pdf"}
+              download
+              style={{
+                textDecoration: "none",
+                color: "inherit",
+              }}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Скачать резюме
+            </a>
           </Button>
           <Button variant="outlined" size="large">
-            Написать мне
+            <Link
+              to={"contacts"}
+              smooth={true}
+              duration={500}
+              offset={-70}
+              style={{
+                textDecoration: "none",
+                color: "inherit",
+              }}
+            >
+              Написать мне
+            </Link>
           </Button>
         </ButtonContainer>
+
         <ContactIcons />
       </TextSide>
-      {!isMobile && (
+      {isMobile ? null : (
         <PhotoSide>
           <CirclePhoto src={"/man_1.png"} />
         </PhotoSide>
@@ -42,7 +71,7 @@ export const Home = () => {
 const Root = styled("div")(({ theme }) => ({
   display: "flex",
   justifyContent: "space-between",
-  minHeight: "calc(100vh - 112px)",
+  minHeight: "100vh",
   alignItems: "center",
   [theme.breakpoints.down("sm")]: {
     flexDirection: "column",
@@ -52,50 +81,75 @@ const Root = styled("div")(({ theme }) => ({
 const TextSide = styled("div")({
   flex: 1,
 });
+
 const PhotoSide = styled("div")({
   flex: 1,
   display: "flex",
   justifyContent: "flex-end",
 });
 
-const Greetings = styled("p")({
+const PhotoMobileWrapper = styled("div")({
+  marginTop: "6rem",
+});
+
+const Greetings = styled("p")(({ theme }) => ({
   color: styleConstant.color.gray,
   fontSize: "1.25rem",
   textTransform: "uppercase",
   fontWeight: 400,
-});
+  [theme.breakpoints.down("sm")]: {
+    fontSize: "0.875rem",
+  },
+}));
 
-const Name = styled("p")({
+const Name = styled("p")(({ theme }) => ({
   fontSize: "4rem",
   fontWeight: 600,
-});
+  [theme.breakpoints.down("sm")]: {
+    fontSize: "2rem",
+  },
+}));
 
 const FirstName = styled("span")({
   color: styleConstant.color.second,
 });
 
-const LastName = styled("span")(({ theme }) => ({
+const LastName = styled("span")({
   color: styleConstant.color.main,
   marginTop: "1rem",
-}));
+});
 
 const Profession = styled("p")(({ theme }) => ({
   color: styleConstant.color.gray,
   marginTop: "2.25rem",
   fontSize: "1.5rem",
   fontWeight: 400,
+  [theme.breakpoints.down("sm")]: {
+    fontSize: "1rem",
+    marginTop: "1rem",
+  },
 }));
 
-const Description = styled("p")({
+const Description = styled("p")(({ theme }) => ({
   color: styleConstant.color.main,
   marginTop: "1.5rem",
   fontSize: "1.25rem",
   fontWeight: 400,
-});
+  [theme.breakpoints.down("sm")]: {
+    fontSize: "0.95rem",
+    marginTop: "1rem",
+  },
+}));
 
 const ButtonContainer = styled("div")(({ theme }) => ({
   display: "flex",
   marginTop: "2rem",
   gap: 18,
   marginBottom: "3rem",
+  [theme.breakpoints.down("sm")]: {
+    flexDirection: "column",
+    gap: "0.75rem",
+    marginTop: "1.5rem",
+    marginBottom: "2rem",
+  },
 }));

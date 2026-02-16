@@ -13,13 +13,14 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { styleConstant } from "@/shared/config/styleConstant";
+import { Link } from "react-scroll";
 
 const drawerWidth = 240;
 const navItems = [
   { name: "home", title: "Главная" },
   { name: "about", title: "Обо мне" },
-  { name: "resume", title: "Резюме" },
   { name: "skills", title: "Навыки" },
+  { name: "experience", title: "Опыт" },
   { name: "contacts", title: "Контакты" },
 ];
 
@@ -45,7 +46,9 @@ export const DrawerAppBar = () => {
         {navItems.map(({ name, title }) => (
           <ListItem key={name} disablePadding>
             <ListItemButton sx={{ textAlign: "center" }}>
-              <ListItemText primary={title} />
+              <Link to={name} smooth={true} duration={500} offset={-70}>
+                <ListItemText primary={title} />
+              </Link>
             </ListItemButton>
           </ListItem>
         ))}
@@ -73,6 +76,7 @@ export const DrawerAppBar = () => {
           >
             <MenuIcon />
           </IconButton>
+
           <Typography
             variant="h6"
             component="div"
@@ -86,31 +90,48 @@ export const DrawerAppBar = () => {
               },
             }}
           >
-            <span
+            <Link
+              to={"home"}
+              smooth={true}
+              duration={500}
+              offset={-70}
               style={{
-                color: styleConstant.color.second,
+                textDecoration: "none",
+                color: "inherit",
                 fontFamily: "Pacifico",
-                fontStyle: "italic",
+                fontSize: "2rem",
+                cursor: "pointer",
               }}
             >
-              Ш
-            </span>
-            ишкин{" "}
-            <span
-              style={{
-                color: styleConstant.color.second,
-                fontFamily: "Pacifico",
-                fontStyle: "italic",
-              }}
-            >
-              Л
-            </span>
-            еонид
+              <span
+                style={{
+                  color: styleConstant.color.second,
+                  fontFamily: "Pacifico",
+                  fontStyle: "italic",
+                }}
+              >
+                Л
+              </span>
+              еонид{" "}
+              <span
+                style={{
+                  color: styleConstant.color.second,
+                  fontFamily: "Pacifico",
+                  fontStyle: "italic",
+                }}
+              >
+                Ш
+              </span>
+              ишкин
+            </Link>
           </Typography>
+
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navItems.map(({ name, title }) => (
               <Button key={name} sx={{ color: "#fff" }}>
-                {title}
+                <Link to={name} smooth={true} duration={500} offset={-70}>
+                  {title}
+                </Link>
               </Button>
             ))}
           </Box>

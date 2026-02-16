@@ -15,8 +15,6 @@ export const CirclePhoto = ({
     <div
       style={{
         width: size / (isMobile ? 1.5 : 1),
-        border: `12px solid ${styleConstant.background.second}`,
-        borderRadius: "12px",
       }}
     >
       <img

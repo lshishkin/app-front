@@ -1,0 +1,9 @@
+export interface ExperienceItem {
+  company: string;
+  role: string;
+  period: string;
+  description: string;
+  responsibilities: string[];
+  achievements?: string[];
+  stack: string[];
+}

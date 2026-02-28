@@ -75,6 +75,7 @@ const Root = styled("div")(({ theme }) => ({
   alignItems: "center",
   [theme.breakpoints.down("sm")]: {
     flexDirection: "column",
+     marginBottom: "2rem",
   },
 }));
 

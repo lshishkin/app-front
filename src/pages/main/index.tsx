@@ -33,13 +33,16 @@ export const MainPage = () => {
   );
 };
 
-const Root = styled("div")({
+const Root = styled("div")(({ theme }) => ({
   display: "flex",
   background: styleConstant.background.main,
   minHeight: "100vh",
   alignItems: "center",
   flexDirection: "column",
-});
+  [theme.breakpoints.down("sm")]: {
+    minHeight: "auto",
+  },
+}));
 
 const Container = styled("div")(({ theme }) => ({
   maxWidth: 1440,

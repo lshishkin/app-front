@@ -41,11 +41,15 @@ export const ExperienceSection = () => {
   );
 };
 
-const Root = styled("div")(() => ({
+const Root = styled("div")(({ theme }) => ({
   display: "flex",
   minHeight: "100vh",
   alignItems: "center",
   flexDirection: "column",
+    [theme.breakpoints.down("sm")]: {
+    minHeight: "auto",
+    marginBottom: "2rem",
+  },
 }));
 
 const ExperienceContainer = styled("div")(({ theme }) => ({

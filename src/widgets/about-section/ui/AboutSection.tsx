@@ -26,6 +26,10 @@ const Root = styled("div")(({ theme }) => ({
   flexDirection: "column",
   minHeight: "100vh",
   alignItems: "center",
+    [theme.breakpoints.down("sm")]: {
+    minHeight: "auto",
+     marginBottom: "2rem",
+  },
 }));
 
 const AboutContainer = styled("div")(({ theme }) => ({

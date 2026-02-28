@@ -36,10 +36,13 @@ export const Navigation = () => {
       onClick={handleDrawerToggle}
       sx={{
         textAlign: "center",
+        background: styleConstant.background.main,
+        color: styleConstant.color.main,
+        height: "100%",
       }}
     >
       <Typography variant="h6" sx={{ my: 2 }}>
-        МUI
+        Шишкин Леонид
       </Typography>
       <Divider />
       <List>

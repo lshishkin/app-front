@@ -43,6 +43,7 @@ const Text = styled("div")(({ theme }) => ({
   fontWeight: "bold",
   marginBottom: 60,
   marginTop: 18,
+  textAlign: "center",
   color: styleConstant.color.main,
   [theme.breakpoints.down("sm")]: {
     marginBottom: 30,

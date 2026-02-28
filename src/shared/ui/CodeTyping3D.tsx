@@ -43,7 +43,10 @@ export const CodeTyping3D = () => {
   return (
     <Wrapper>
       <CodeCard>
-        <SyntaxHighlighter language="javascript" style={vscDarkPlus}>
+        <SyntaxHighlighter
+          language="javascript"
+          style={{ ...vscDarkPlus, overflow: "hidden" }}
+        >
           {code.slice(0, count)}
         </SyntaxHighlighter>
       </CodeCard>
@@ -78,11 +81,15 @@ const CodeCard = styled("div")(({ theme }) => ({
   overflow: "hidden",
   [theme.breakpoints.down("sm")]: {
     width: 250,
-    height: 350,
-    fontSize: 6,
-    lineHeight: 1,
+    height: 300,
+    fontSize: 5,
+    padding: 0,
     "& .language-javascript": {
       fontSize: "6px!important",
+    },
+    "& pre": {
+      overflow: "hidden!important",
+      lineHeight: "1!important",
     },
   },
 }));

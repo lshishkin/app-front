@@ -34,6 +34,7 @@ const AboutContainer = styled("div")(({ theme }) => ({
   alignItems: "center",
   [theme.breakpoints.down("sm")]: {
     flexDirection: "column",
+    gap: 18,
   },
 }));
 

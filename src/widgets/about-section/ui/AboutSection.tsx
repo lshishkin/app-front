@@ -55,6 +55,7 @@ const Description = styled("p")(({ theme }) => ({
   fontSize: "1.5rem",
   color: styleConstant.color.gray,
   marginTop: "1.5rem",
+  whiteSpace: "pre-wrap",
   [theme.breakpoints.down("sm")]: {
     fontSize: "1rem",
     marginTop: "1rem",

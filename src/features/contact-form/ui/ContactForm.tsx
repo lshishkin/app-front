@@ -65,7 +65,7 @@ export const ContactForm = () => {
         subject: "",
         message: "",
       });
-      setTimeout(() => setSuccess(false), 3000);
+      setTimeout(() => setSuccess(false), 10000);
     } catch (error) {
       console.error("Error submitting form:", error);
     } finally {

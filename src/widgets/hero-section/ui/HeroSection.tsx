@@ -76,6 +76,7 @@ const Root = styled("div")(({ theme }) => ({
   [theme.breakpoints.down("sm")]: {
     flexDirection: "column",
      marginBottom: "2rem",
+     minHeight: "calc(100vh - 100px)",
   },
 }));
 
@@ -90,7 +91,7 @@ const PhotoSide = styled("div")({
 });
 
 const PhotoMobileWrapper = styled("div")({
-  marginTop: "6rem",
+  marginTop: "1rem",
 });
 
 const Greetings = styled("p")(({ theme }) => ({

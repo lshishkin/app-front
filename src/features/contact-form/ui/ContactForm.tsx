@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { Box, TextField, TextareaAutosize } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { Button } from "@/shared/ui/Button";
@@ -23,6 +23,10 @@ export const ContactForm = () => {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [token, setToken] = useState("");
+
+  const handleRecaptchaVerify = useCallback((token: string) => {
+    setToken(token);
+  }, []);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -147,9 +151,7 @@ export const ContactForm = () => {
       <div style={{ position: "relative" }}>
         <ReCaptchaProvider reCaptchaKey={import.meta.env.PUBLIC_RECAPTCHA_KEY}>
           <ReCaptcha
-            onVerify={(v) => {
-              setToken(v);
-            }}
+            onVerify={handleRecaptchaVerify}
           />
         </ReCaptchaProvider>
         <RecaptchaDisclaimer>

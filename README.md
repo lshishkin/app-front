@@ -1,6 +1,6 @@
 # Rsbuild project
 
-# Real World react-query example
+# Личный сайт [shishkin.site](https://shishkin.site)
 
 ## Setup
 

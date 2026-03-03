@@ -1,15 +1,9 @@
-import { useState, useCallback } from "react";
-import { Box, TextField, TextareaAutosize } from "@mui/material";
+import { useState } from "react";
+import { TextField, TextareaAutosize } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { Button } from "@/shared/ui/Button";
 import { styleConstant } from "@/shared/config/styleConstant";
-import TelegramIcon from "@mui/icons-material/Telegram";
-import AlternateEmailOutlinedIcon from "@mui/icons-material/AlternateEmailOutlined";
-import InstagramIcon from "@mui/icons-material/Instagram";
-import GitHubIcon from "@mui/icons-material/GitHub";
-import { profile, contacts } from "@/entities";
 import emailjs from "@emailjs/browser";
-import { ReCaptchaProvider, ReCaptcha } from "@wojtekmaj/react-recaptcha-v3";
 
 export const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -22,11 +16,6 @@ export const ContactForm = () => {
 
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
-  const [token, setToken] = useState("");
-
-  const handleRecaptchaVerify = useCallback((token: string) => {
-    setToken(token);
-  }, []);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -56,7 +45,6 @@ export const ContactForm = () => {
           email: formData.email,
           phone: formData.phone,
           subject: formData.subject,
-          "g-recaptcha-response": token,
         },
         { publicKey },
       );
@@ -143,42 +131,10 @@ export const ContactForm = () => {
         variant="contained"
         size="large"
         type="submit"
-        disabled={loading || !token}
+        disabled={loading}
       >
         {loading ? "Отправляю..." : "Отправить сообщение"} 🚀
       </SubmitButton>
-
-      <div style={{ position: "relative" }}>
-        <ReCaptchaProvider reCaptchaKey={import.meta.env.PUBLIC_RECAPTCHA_KEY}>
-          <ReCaptcha
-            onVerify={handleRecaptchaVerify}
-          />
-        </ReCaptchaProvider>
-        <RecaptchaDisclaimer>
-          Эта форма защищена <strong>reCAPTCHA</strong> от Google.
-          <br />
-          Применяются{" "}
-          <a
-            href="https://policies.google.com/privacy"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ color: "#777", textDecoration: "underline" }}
-          >
-            Политика конфиденциальности
-          </a>{" "}
-          и{" "}
-          <a
-            href="https://policies.google.com/terms"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ color: "#777", textDecoration: "underline" }}
-          >
-            Условия использования
-          </a>
-          .
-        </RecaptchaDisclaimer>
-      </div>
-
       {success && <SuccessMessage>Сообщение успешно отправлено!</SuccessMessage>}
     </Form>
   );
@@ -289,10 +245,3 @@ const SuccessMessage = styled("p")({
   borderRadius: "0.5rem",
 });
 
-const RecaptchaDisclaimer = styled("div")({
-  fontSize: "11px",
-  textAlign: "center",
-  color: "#777",
-  marginTop: "12px",
-  lineHeight: 1.4,
-});

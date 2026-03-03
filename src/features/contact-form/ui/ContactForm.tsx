@@ -14,6 +14,7 @@ export const ContactForm = () => {
     message: "",
   });
 
+  const [honeypot, setHoneypot] = useState("");
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
 
@@ -29,6 +30,15 @@ export const ContactForm = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    // Honeypot validation
+    if (honeypot.trim() !== "") {
+      console.warn("Honeypot field was filled - spam attempt detected");
+      setSuccess(true);
+      setTimeout(() => setSuccess(false), 10000);
+      return;
+    }
+
     setLoading(true);
 
     const serviceId = import.meta.env.PUBLIC_SERVICE_ID;
@@ -57,6 +67,7 @@ export const ContactForm = () => {
         subject: "",
         message: "",
       });
+      setHoneypot("");
       setTimeout(() => setSuccess(false), 10000);
     } catch (error) {
       console.error("Error submitting form:", error);
@@ -67,6 +78,15 @@ export const ContactForm = () => {
 
   return (
     <Form onSubmit={handleSubmit}>
+      <HoneypotField
+        type="text"
+        name="website"
+        value={honeypot}
+        onChange={(e) => setHoneypot(e.target.value)}
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+      />
       <FormGroup>
         <Label>Имя</Label>
         <StyledTextField
@@ -243,5 +263,17 @@ const SuccessMessage = styled("p")({
   padding: "0.75rem",
   backgroundColor: "rgba(16, 185, 129, 0.1)",
   borderRadius: "0.5rem",
+});
+
+const HoneypotField = styled("input")({
+  position: "absolute",
+  left: "-9999px",
+  opacity: 0,
+  pointerEvents: "none",
+  height: 0,
+  width: 0,
+  margin: 0,
+  padding: 0,
+  border: "none",
 });
 
